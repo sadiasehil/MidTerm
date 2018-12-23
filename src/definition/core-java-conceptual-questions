@@ -1,23 +1,45 @@
 Please answer the below core-java Questions:
 
 What is programing language?
-A.
+A.is a formal language, which comprises a set of instructions used to create programs that implement specific algorithms. .
 What jdk contains or composed of and define each components?
-A.
+A.Java Development Kit contains :
+-Java Runtime Environment:is a set of software tools for development of Java applications
+-interpreter(java):
+-compiler (javac):A compiler is a software program that transforms high-level source code in a high-level programming language into a low level (binary code)  .
+-archiver (jar):
+-documentation generator (javadoc):
 What is IDE?
-A.
+A. is an integrated development environment for programming.
 What are the IDEs available in the market to support java?
+-Eclipse ,Intellij,Netbeans ,
 Explain the entire java life cycle.
+-When you write a source code using either notepad or eclipse IDE, it needs to be converted into byte code using javac compiler. Byte code is in the form of .class .  The class file then loads into the JVM using java loader . the JVM then send all the information to the operating system which shows you the output
 what is class?
+-blueprint of an object
 What is object?
+-is instance of class
 What is the entry point of an application?
+-are used to control users' access to different versions of an application
 Why main is static?
+-because is called by the JVM before any objects are made.
 Which class is the superclass of all classes?
+- java.lang.Object
 What is difference between path and classpath variables?
+-Path is an environment variable which is used by the operating system to find the executables.
+-Classpath is an environment variable which is used by the Java compiler to find the path, of classes
 What is the difference between an Interface and Abstract class?
+-Interface contain abstract methods
+-Abstract Class contain abstract and non abstract  methods
 Can you make an Object from an Interface and Abstract class ? if not how do you use it ?
 what is Access Specifier?
+-help to restrict the scope of class, constructor,,variables,methods .
 What is OOP ? Define each feature of java OOP.
+-00P:object Oriented Programming : is a programming language model organized around objects rather than "actions" and data rather than logic.
+--Abstraction : is a mechanism of hiding implementations details from the user  .
+--Inheritance: is a mechanism in witch an abject acquires the properties and behavior of the parent object
+--Interface :is a mechanism of hiding data
+--polymorphism: means having many forms ,it is achieved by function overloading or  overloading.
 What is Java Package and which package is imported by default?
 What is API? Name list of API that you have used so far.
 Does java support multiple inheritance, explain why or why not?
