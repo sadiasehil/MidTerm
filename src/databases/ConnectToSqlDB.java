@@ -24,7 +24,7 @@ public class ConnectToSqlDB {
 
     public static Properties loadProperties() throws IOException{
         Properties prop = new Properties();
-        InputStream ism = new FileInputStream("src/secret.properties");
+        InputStream ism = new FileInputStream("C:\\Users\\sadia\\IdeaProjects\\SeleniumNovember2018\\MidtermNovember2018\\src\\secret.properties");
         prop.load(ism);
         ism.close();
         return prop;
