@@ -1,5 +1,7 @@
 package algorithm;
 
+import java.util.Arrays;
+
 public class Sort {
 
     long executionTime = 0;
@@ -235,9 +237,27 @@ int partition(int array[], int low, int high)
     }
 
 
-    public int [] bucketSort(int [] array){
+    public int [] bucketSort(int [] array,int maxArrayElementValue ){
         int [] list = array;
         //implement here
+
+        int max = maxArrayElementValue;
+        int [] bucket=new int[max+1];
+
+        for (int i=0; i<bucket.length; i++) {
+            bucket[i]=0;
+        }
+
+        for (int i=0; i<list.length; i++) {
+            bucket[list[i]]++;
+        }
+
+        int position=0;
+        for (int i=0; i<bucket.length; i++) {
+            for (int j=0; j<bucket[i]; j++) {
+                list[position++]=i;
+            }
+        }
         
         
 
