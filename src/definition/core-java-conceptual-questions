@@ -5,14 +5,16 @@ A.is a formal language, which comprises a set of instructions used to create pro
 What jdk contains or composed of and define each components?
 A.Java Development Kit contains :
 -Java Runtime Environment:is a set of software tools for development of Java applications
--interpreter(java):
+-interpreter(java): the interpreter provides the support to run Java executable programs in compiled, bytecode format.
 -compiler (javac):A compiler is a software program that transforms high-level source code in a high-level programming language into a low level (binary code)  .
 -archiver (jar):
--documentation generator (javadoc):
+-The Applet Viewer: The applet viewer is a tool that serves as a minimal test bed for final release Java applets. You can use the applet viewer to test your programs instead of having towait for HotJava to support the final release of Java.
+-The Debugger: Debugger does the job of debugging the a piece of code.
+-documentation generator (javadoc):Generates HTML pages of API documentation from Java source files.
 What is IDE?
-A. is an integrated development environment for programming.
+A. is an integrated development environment for programming.is a software suite that consolidates the basic tools developers need to write and test software. Typically, an IDE contains a code editor, a compiler or interpreter and a debugger
 What are the IDEs available in the market to support java?
--Eclipse ,Intellij,Netbeans ,
+-Eclipse ,Intellij,Netbeans ,JSource, JDeveloper ...
 Explain the entire java life cycle.
 -When you write a source code using either notepad or eclipse IDE, it needs to be converted into byte code using javac compiler. Byte code is in the form of .class .  The class file then loads into the JVM using java loader . the JVM then send all the information to the operating system which shows you the output
 what is class?
@@ -41,37 +43,82 @@ What is OOP ? Define each feature of java OOP.
 --Interface :is a mechanism of hiding data
 --polymorphism: means having many forms ,it is achieved by function overloading or  overloading.
 What is Java Package and which package is imported by default?
+-A package is a namespace that organizes a set of related classes and interfaces
+-java.lang package is imported by default
 What is API? Name list of API that you have used so far.
+-API:Application Programming Interface,is a set of routines, protocols, and tools for building software applications. Basically, an API specifies how software components should interact
 Does java support multiple inheritance, explain why or why not?
+-NO, The reason behind this is to prevent ambiguity
 What is method overloading and when it happens?
+-is a feature that allows a class to have more than one method having the same name, if their argument lists are different. It is similar to constructor overloading in Java, that allows a class to have more than one constructor having different argument lists.
+-the overloading happens when you have  methods with the same name but different signatures
 Explain exceptions in java and how to handle it.
+-An exception is an unwanted or unexpected event, which occurs during the execution of a program
+-Java exception handling is managed via ( try, catch) block , throw, throws, and finally.
 What is static keyword in java? How it has been used in variables and methods ?
+-The he static keyword denotes that a member variable, or method, can be accessed without requiring an instantiation of the class to which it belongswhen static key word is used with a method that method can be called without creating a object.
 What is final and how it has been used variables and methods?
+-final is a non-access modifier applicable only to a variable, a method or a class.
+-final variable is constant variable
+-final classe is a class which cannot be extended(inherited)
+-A final method is a method which cannot be overridden
 What is final, finally and finalize?
+-final is used to apply restrictions on class, method and variable. Final class can't be inherited, final method can't be overridden and final variable value can't be changed.
+-Finally is used to place important code, it will be executed whether exception is handled or not.
+-Finalize is used to perform clean up processing just before object is garbage collected.
 What is a constructor ?
+-A constructor is an instance method that has the same name as the class, and can be used to set the values of the members of an object
 Can we have multiple constructors in a class?
+-YES
 If we don't have a constructor declared, what is called during the object creation?
+- create an object from a class
 What is "this" keyword in java ?
+-‘this’ is a reference variable that refers to the current object
 What is "super" keyword in java? How many possible way can you use?
+-super key word used for accessing the members of the super class by the extended class
 What is JVM stand for ?
+-is a virtual machine that enables a computer to run Java programs as well as programs written in other languages that are also compiled to Java bytecode.
 Is JVM platform independent?
+-The JVM must be platform dependent to allow your Java to run on the specific platform. A JVM for Windows will translate your Java into different system calls than a JVM for OS X. No, JVMs are not platform independent.In fact they are platform specific run time environment provided by the vendor.
 What version of java are you using?
+- java version 10.0.2"
 What is JAR stand for ?
+-A JAR file is basically a zip-file which contains a couple of class files and a text file containing some meta information.
 What is the difference between JDK and JVM?
 What is the difference between JVM and JRE?
+-JDK is an acronym for Java Development Kit.It physically exists.It contains JRE + development tools.JVM (Java Virtual Machine) is an abstract machine. It is a specification that provides runtime environment in which java bytecode can be executed.
 What is compile time and run time?
+-Java compile the .java file to .class file, this stage is called compile time. java loader loads the .class file in JVM and JVM executes the application. This execution time of a application is called run time.
 What is heap?
+The heap is the run-time data area from which memory for all class instances and arrays is allocated. Heap is the place where all objects stays during run time. It is part of RAM.
 How java manage it's memory?
+-All the primitive variables and reference variable stays in stack. Heap contains the objects.
+ Main methods executes on stack. during the process of execution when a object lost his reference variable
+ which is being erased from the stack after completion of execution is waits for the Java automatic garbage
+ collector, and object without no reference variable being removed from heap by garbage collector.
 What is the difference between String, StringBuffer and StringBuilder?
+-String is immutable, if you try to alter their values, another object gets created, whereas StringBuffer and StringBuilder are mutable so they can change their values.StringBuffer methods are synchronized while StringBuilder methods are non-synchronized, it means that for thread-safe operations you must choose StringBuffer class instead of StringBuilder.
 What is Singleton class?
+- a singleton class is a class that can have only one object (an instance of the class) at a time.
 What is Serialization and Deserialization?
+-Serialization is a mechanism of converting the state of an object into a byte stream. Deserialization is the reverse process where the byte stream is used to recreate the actual Java object in memory. This mechanism is used to persist the object
 when to use transient variable in java?
+-The Java transient keyword is used on class attributes/variables to indicate that serialization process of such class should ignore such variables while creating a persistent byte stream for any instance of that class. A transient variable is a variable that can not be serialized.
 Difference between while and do..while loop?
+- while loop :verify the condition first  and do the task
+-do .. while : do the task first and then check the condition
 What is Enum?
+-is constant data type , used to define collections of constants
 What is Iterator?
+-The Java Iterator interface represents an object capable of iterating through a collection of Java objects one object at a time
 Which one will take more memory, an int or Integer?
+-An int shall take 4 bytes and Integer shall take about 16 bytes space in heap.Integer are wrapper class which has more overhead compared to primitive type. The memory space consumption by object depends upon JVM during run time environment. For a object this space varies.
 Why is String Immutable in Java?
 What is constructor chaining in Java?
+-Constructor chaining is the process of calling one constructor from another constructor with respect to current object.
+ Constructor chaining can be done in two ways:
+ --Within same class: It can be done using this() keyword for constructors in same class
+ --From base class: by using super() keyword to call constructor from the base class.
 The difference between Serial and Parallel Garbage Collector?
 What is JIT stands for?
 Explain Java Heap space and Garbage collection?
