@@ -2,7 +2,7 @@ package math.problems;
 
 import org.testng.Assert;
 
-import java.util.Scanner;
+
 
 public class UnitTestingMath {
     public static void main(String[] args) {
