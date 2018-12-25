@@ -2,7 +2,7 @@ package design;
 
 import java.util.Scanner;
 
-public class EmployeeInfo {
+public class EmployeeInfo extends Departements implements Employee{
 	
  /*This class can be implemented from Employee interface then add additional methods in EmployeeInfo class.
  * Also, Employee interface can be implemented into an abstract class.So create an Abstract class
@@ -20,7 +20,10 @@ public class EmployeeInfo {
 	/*
 	 * declare few static and final fields and some non-static fields
 	 */
-	static String companyName;
+	static String companyName="PEOPLENTECH";
+	int employeeId;
+	String name;
+	static double monthly;
 	
 	/*
 	 * You must implement the logic for below 2 methods and 
@@ -32,13 +35,36 @@ public class EmployeeInfo {
 	 * you must have multiple constructor.
 	 * Must implement below constructor.
 	 */
+	public EmployeeInfo(){
+		System.out.println("No information available");
+	};
 	public EmployeeInfo(int employeeId){
-		
+		this.employeeId=employeeId;
+		System.out.println("Show ID " + employeeId);
 	}
-    public EmployeeInfo(String name, int employeeId){
-		
+	public EmployeeInfo(String name, int employeeId){
+		this.name = name;
+		this.employeeId = employeeId;
+		System.out.println(name + " has ID no: " + employeeId);
 	}
-	
+	public void monthlySalary(int a ){
+		System.out.println("Salary of this month is: "+a);
+	}
+
+	public void monthlySalary(int a , int b)
+	{
+		System.out.println("Salary of last two month is: "+(a+b));
+	}
+
+	public void monthlySalary(){
+		if (monthly>0){
+			System.out.println("Half Yearly Salary is: "+monthly*6);}
+		else {
+			System.out.println("You are unemployed");
+		}}
+
+
+
 	/*
 	 * This methods should calculate Employee bonus based on salary and performance.
 	 * Then it will return the total yearly bonus. So you need to implement the logic.
@@ -47,32 +73,87 @@ public class EmployeeInfo {
 	 * So you probably need to send 2 arguments.
 	 * 
 	 */
-	public static int calculateEmployeeBonus(int numberOfYearsWithCompany){
-		int total=0;
-		return total;
+	public double calculateEmployeeBonus(int numberOfYearsWithCompany){
+		double total = monthly;
+		if (numberOfYearsWithCompany>=3 ){total = (int)monthly * 0.10;
+			System.out.println("Your new salary with 10% raise is: " + total);return (int) total;
+		} else if (numberOfYearsWithCompany>=2 ){ total = (int)monthly * 0.08;
+			System.out.println("Your increment for average performance with 8% rise is: " + total);}
+		return (int) total;
 	}
-	
 	/*
 	 * This methods should calculate Employee Pension based on salary and numbers of years with the company.
 	 * Then it will return the total pension. So you need to implement the logic.
 	 * Hints: pension will be 5% of the salary for 1 year, 10% for 2 years with the company and so on.
 	 * 
 	 */
-	public static int calculateEmployeePension(){
-		int total=0;
+	public double calculateEmployeePension(){
+		int total = 0;
 		Scanner sc  = new Scanner(System.in);
 		System.out.println("Please enter start date in format (example: May,2015): ");
 		String joiningDate = sc.nextLine();
 		System.out.println("Please enter today's date in format (example: August,2017): ");
 		String todaysDate = sc.nextLine();
-        String convertedJoiningDate = DateConversion.convertDate(joiningDate);
-        String convertedTodaysDate = DateConversion.convertDate(todaysDate);
-
-        //implement numbers of year from above two dates
-		//Calculate pension
-
+		String convertedJoiningDate = DateConversion.convertDate(joiningDate);
+		String convertedTodaysDate = DateConversion.convertDate(todaysDate);
+		if (convertedJoiningDate.endsWith("2015") && convertedTodaysDate.endsWith("2018"))
+		{total = ((int) (monthly * 0.15 * 12));
+			System.out.println("Your pension is: (excluding salary) "+total);}
+		else if (convertedJoiningDate.endsWith("2016") && convertedTodaysDate.endsWith("2018"))
+		{total = ((int) (monthly * 0.10 * 12));
+			System.out.println("Your pension is: (excluding salary) "+total);}
+		else if (convertedJoiningDate.endsWith("2017") && convertedTodaysDate.endsWith("2018"))
+		{total = ((int) (monthly * 0.05 * 12));
+			System.out.println("Your pension is: (excluding salary) "+total);}
 		return total;
 	}
+
+	@Override
+	public int employeeId() {
+		return employeeId;
+	}
+
+	@Override
+	public String employeeName() {
+		return name;
+	}
+
+	@Override
+	public void assignDepartment() {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Please enter your department name: ");
+		String department = s.nextLine();
+		if (name==null){
+			System.out.println("Please enter your name here: ");
+			String nName = s.nextLine();
+			System.out.println(nName + " has been assign to " + department);
+			this.name = nName;
+		} else{
+			System.out.println(name + " has been assign to " + department);}
+
+	}
+
+	@Override
+	public double calculateSalary() {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Please insert your monthly salary here");
+		double monthly = s.nextInt();
+		this.monthly = monthly;
+		System.out.println(name+ "'s Monthly salary is: "+monthly);
+		System.out.println(name+ "'s Annual salary is: "+monthly*12);
+		return monthly;
+	}
+
+	@Override
+	public void benefitLayout() {
+
+	}
+
+	@Override
+	public void departements() {
+		System.out.println("The Four Departments of this organization are: \n" +dep1+"\n"+dep2+"\n"+dep3+"\n"+dep4+"\n"+dep5);
+	}
+
 	private static class DateConversion {
 
 		public DateConversion(Months months){}
