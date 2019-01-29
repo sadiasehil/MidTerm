@@ -37,8 +37,8 @@ public class ProcessStudentInfo {
 
 			public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
 				//Path of XML data to be read.
-				String pathSelenium  = System.getProperty("user.dir") +"selenium.xml";
-				String pathQtp = System.getProperty("user.dir") + "qtp.xml";
+				String pathSelenium  = System.getProperty("user.dir")+"/src/parser/selenium1.xml";
+				String pathQtp = System.getProperty("user.dir") + "/src/parser/qtp.xml";
 				String tag = "id";
                 //Create ConnectToSqlDB Object
 				ConnectToMongoDB connectToMongoDB = new ConnectToMongoDB();
@@ -63,15 +63,27 @@ public class ProcessStudentInfo {
 				//add Selenium ArrayList data into map.
 
 				//add Qtp ArrayList data into map.
-		
-		      	
-				//Retrieve map data and display output.
 
+				list.put("qtp",qtpStudents);
+
+				//Retrieve map data and display output.
+				for (Map.Entry <String,List<Student>> print : list.entrySet()){
+					List<Student> studentList=(List<Student>) list.get(print.getKey());
+					System.out.println("\nPortfolio of Student of "+print.getKey()+"classes :\n");
+					for (Student studentprofile:studentList) {
+						String id=studentprofile.getId();
+						String firstname=studentprofile.getFirstName();
+						String lastname=studentprofile.getLastName();
+						String grade=studentprofile.getScore();
+						System.out.println("Students (id="+id+")"+firstname +" "+lastname+"    grade="+grade);
+					}
+				}
 
 
 				//Store Qtp data into Qtp table in Database
+				ConnectToSqlDB connectToSqlDB=new ConnectToSqlDB();
 				connectToMongoDB.insertIntoMongoDB(seleniumStudents,"qtp");
-				//connectToSqlDB.insertDataFromArrayListToMySql(seleniumStudents, "qtp","studentList");
+				connectToSqlDB.insertDataFromArrayListToSqlTable(seleniumStudents, "qtp","studentList");
 
 				//Store Selenium data into Selenium table in Database
 
