@@ -58,29 +58,24 @@ public class Sort {
 
 
 //Bubble Sort
-    void swap(int x, int y)
-    {
-        int temp = x;
-        x = y;
-        y = temp;
+public int[] bubbleSort(int [] array){
+    final long startTime = System.currentTimeMillis();
+    int [] list = array;
+    for(int i=0;i<list.length;i++){
+        for(int j=0;j<list.length-1;j++){
+            if(list[j]>list[j+1]){
+                int temp = list[j];
+                list[j] = list[j+1];
+                list[j+1]=temp;
+            }
+        }
     }
-    public int[] bubbleSort(int [] array){
-        int [] list = array;
-        //implement here
-        int i, j;
-        for (i = 0; i < array.length-1; i++)
+    final long endTime = System.currentTimeMillis();
+    final long executionTime = endTime - startTime;
 
-            // Last i elements are already in place
-            for (j = 0; j < array.length-i-1; j++)
-                if (array[j] > array[j+1])
-                    swap(array[j], array[j+1]);
-
-
-        
-        
-        return list;
-    }
-    
+    this.executionTime = executionTime;
+    return list;
+}
 //Merge Sort
     public static int [] leftHalf(int[] array ){
     int size1= array.length/2;
@@ -120,6 +115,7 @@ public class Sort {
 
     }
     public int [] mergeSort(int [] array){
+        final long startTime = System.currentTimeMillis();
         int [] list = array;
         //implement here
         if (array . length >1 )
@@ -135,7 +131,10 @@ public class Sort {
 
         }
 
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
 
+        this.executionTime = executionTime;
 
         return list;
     }
@@ -168,6 +167,7 @@ int partition(int array[], int low, int high)
     return i+1;
 }
     public int [] quickSort(int [] array,int low , int high){
+        final long startTime = System.currentTimeMillis();
         int [] list = array;
         //implement here
         if (low < high)
@@ -180,8 +180,11 @@ int partition(int array[], int low, int high)
             quickSort(array, low, pi-1);
             quickSort(array, pi+1, high);
         }
-        
 
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+
+        this.executionTime = executionTime;
         return list;
     }
     //heapSort
@@ -212,6 +215,7 @@ int partition(int array[], int low, int high)
         }
     }
     public int [] heapSort(int [] array){
+        final long startTime = System.currentTimeMillis();
         int [] list = array;
         //implement here
         int n = array.length;
@@ -231,13 +235,17 @@ int partition(int array[], int low, int high)
             // call max heapify on the reduced heap
             heapify(array, i, 0);
         }
-        
 
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+
+        this.executionTime = executionTime;
         return list;
     }
 
 
     public int [] bucketSort(int [] array,int maxArrayElementValue ){
+        final long startTime = System.currentTimeMillis();
         int [] list = array;
         //implement here
 
@@ -258,18 +266,25 @@ int partition(int array[], int low, int high)
                 list[position++]=i;
             }
         }
-        
-        
+
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+
+        this.executionTime = executionTime;
 
         return list;
     }
     
     public int [] shellSort(int [] array){
+        final long startTime = System.currentTimeMillis();
         int [] list = array;
         //implement here
-        
-        
 
+
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+
+        this.executionTime = executionTime;
         return list;
     }
 

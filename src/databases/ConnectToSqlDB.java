@@ -1,15 +1,16 @@
-package databases;
 
-import parser.Student;
+        package databases;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.*;
-import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+        import parser.Student;
+
+        import java.io.FileInputStream;
+        import java.io.IOException;
+        import java.io.InputStream;
+        import java.sql.*;
+        import java.sql.Connection;
+        import java.util.ArrayList;
+        import java.util.List;
+        import java.util.Properties;
 
 /**
  * Created by mrahman on 04/02/18.
@@ -21,10 +22,11 @@ public class ConnectToSqlDB {
     public static Statement statement = null;
     public static PreparedStatement ps = null;
     public static ResultSet resultSet = null;
+    public static ResultSet resultSet2 = null;
 
     public static Properties loadProperties() throws IOException{
         Properties prop = new Properties();
-        InputStream ism = new FileInputStream("C:\\Users\\sadia\\IdeaProjects\\SeleniumNovember2018\\MidtermNovember2018\\src\\secret.properties");
+        InputStream ism = new FileInputStream("src/secret.properties");
         prop.load(ism);
         ism.close();
         return prop;
@@ -147,8 +149,11 @@ public class ConnectToSqlDB {
             ps = connect.prepareStatement("CREATE TABLE `"+tableName+"` (`ID` int(11) NOT NULL AUTO_INCREMENT,`SortingNumbers` bigint(20) DEFAULT NULL,  PRIMARY KEY (`ID`) );");
             ps.executeUpdate();
             for(Student st:list){
-                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+columnName+" ) VALUES(?)");
-                ps.setObject(1,st);
+                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+columnName+") VALUES(?,?)");
+                ps.setObject(1,st.getFirstName());
+                ps.setObject(2,st.getLastName());
+//                ps.setObject(3,st.getScore());
+//                ps.setObject(4,st.getId());
                 ps.executeUpdate();
             }
 
@@ -166,10 +171,10 @@ public class ConnectToSqlDB {
     {
         try {
             connectToSqlDatabase();
-                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( " + columnName1 + "," + columnName2 + " ) VALUES(?,?)");
-                ps.setString(1,"Ankita Sing");
-                ps.setInt(2,3590);
-                ps.executeUpdate();
+            ps = connect.prepareStatement("INSERT INTO "+tableName+" ( " + columnName1 + "," + columnName2 + " ) VALUES(?,?)");
+            ps.setString(1,"Ankita Sing");
+            ps.setInt(2,3590);
+            ps.executeUpdate();
 
 
         } catch (IOException e) {
@@ -216,4 +221,8 @@ public class ConnectToSqlDB {
             System.out.println(user.getStName() + " " + user.getStID()+ " " + user.getStDOB());
         }
     }
+
+
+
+
 }

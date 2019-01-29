@@ -43,6 +43,13 @@ public class UnitTestSorting {
         }catch(Exception ex){
             ex.getMessage();
         }
+        //verify if the unsorted array is sorted by the heap sort algorithm.
+        sort.heapSort(unSortedArray);
+        try {
+            Assert.assertEquals(sortedArray, unSortedArray, "Array is not Sorted");
+        }catch(Exception ex){
+            ex.getMessage();
+        }
         //verify if the unsorted array is sorted by the bucket sort algorithm.
         sort.bucketSort(unSortedArray,9);
         try {
@@ -50,8 +57,8 @@ public class UnitTestSorting {
         }catch(Exception ex){
             ex.getMessage();
         }
-        //verify if the unsorted array is sorted by the merge sort algorithm.
-        sort.quickSort(unSortedArray,0,9);
+        //verify if the unsorted array is sorted by the Quick sort algorithm.
+        sort.quickSort(unSortedArray,0,6);
         try {
             Assert.assertEquals(sortedArray, unSortedArray, "Array is not Sorted");
         }catch(Exception ex){

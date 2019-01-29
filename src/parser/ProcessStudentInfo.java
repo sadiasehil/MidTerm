@@ -37,8 +37,8 @@ public class ProcessStudentInfo {
 
 			public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
 				//Path of XML data to be read.
-				String pathSelenium  = System.getProperty("user.dir") +"/src/parser/selenium.xml";
-				String pathQtp = System.getProperty("user.dir") + "/src/parser/qtp.xml";
+				String pathSelenium  = System.getProperty("user.dir") +"selenium.xml";
+				String pathQtp = System.getProperty("user.dir") + "qtp.xml";
 				String tag = "id";
                 //Create ConnectToSqlDB Object
 				ConnectToMongoDB connectToMongoDB = new ConnectToMongoDB();
@@ -59,7 +59,7 @@ public class ProcessStudentInfo {
 				seleniumStudents = xmlReader.parseData(tag, pathSelenium);
 
 				//Parse Data using parseData method and then store data into Qtp ArrayList.
-				
+				qtpStudents=xmlReader.parseData(tag,pathQtp );
 				//add Selenium ArrayList data into map.
 
 				//add Qtp ArrayList data into map.
